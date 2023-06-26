@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="container">
+            <form onsubmit="sentEmail() reset(); return false;">
+                <h3>Get In Touch</h3>
+                <input type="text" name="name" id="name" placeholder="Enter Your Name"  required>
+            <input type="email" name="email" id="Email" placeholder="Enter Your Email" required>
+            <input type="text" name="number" id="Number" placeholder="Enter Your Contact Number" required>
+            <textarea id="Message" rows="4" placeholder="How can we help you?"></textarea>
+            <button type="button">Send</button>
+            </form>
+        </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+            function sentEmail(){
+    Email.send({
+        Host : "smtp.gmail.com",
+        Username : "inoxentansari026@gmail.com",
+        Password : "29247786@",
+        To : 'husnainraza7t9@gmail.com',
+        From : document.getElementById("Email").value,
+        Subject : "New Contact Form Enqury",
+        Body : "name:" + document.getElementById("name").value
+        + "<br> email:" + document.getElementById("Email").value
+        + "<br> number:" + document.getElementById("Number").value
+        + "<br> Message:" + document.getElementById("Message").value
+    }).then(
+      message => alert("Message sent successfully")
+    );
+}
+
+    </script>
+</body>
+</html>
